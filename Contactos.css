@@ -15,6 +15,50 @@ body{
     width: 100%;
     position: relative;
 }
+.promo{
+    font-size: 12px;
+    padding: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    margin: auto;
+    position: relative;
+    z-index: 2;
+    color: white;
+}
+.promo button{
+    cursor: pointer;
+    font-size: 30px;
+    margin: 20px;
+    padding: 20px 40px;
+    background-color: rgb(156, 155, 155);
+    color: white;
+}
+
+#hero{
+    min-height: 100vh;
+    position: relative;
+}
+video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.capa{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    opacity: 0.9;
+}
+
 nav h1{
     color: white;
     font-size: 45px;
@@ -132,15 +176,15 @@ menu.item:hover{
 }
 @media(max-width: 453px){
     .links-container{
-        display: none;
         flex-direction: column;
         align-items: flex-start;
 
         position: fixed;
         top: 0;
-        right: 0;
+        right: -100%;
         z-index: 10;
         width: 300px;
+        transition: 500ms;
 
         background-color: var(--color-1);
         box-shadow: -5px 0 5px rgba(0, 0, 0, 0.25);
@@ -156,11 +200,53 @@ menu.item:hover{
         display: block;
     }
     #sidebar-active:checked ~ .links-container{
-        display: flex;
+        right: 0;
     }
     nav h1{
         color: white;
         font-size: 45px;
         margin-left:5px;
     }
+        nav h1{
+        color: white;
+        font-size: 45px;
+        margin-right: 40%;;
+    }
+    .promo{
+        font-size: 8px;
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        margin: auto;
+        position: relative;
+        z-index: 2;
+        color: white;}
+        .promo button{
+            cursor: pointer;
+            font-size: 20px;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: rgb(156, 155, 155);
+            color: white;
+        }
+        .capa{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            opacity: 0.9;
+        }
+        video{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 }
