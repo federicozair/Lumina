@@ -7,18 +7,25 @@
     <link rel="stylesheet" href="cuenta.css">
 </head>
 <body>
-    <header class="header">
-        <nav>
-            <h1 href="#">LUMINA</h1>
-                <ul class="menu">
-                    <li><a href="index.html">INICIO</a></li>
-                    <li><a href="Remeras.html">REMERAS</a></li>
-                    <li><a href="Pantalones.html">PANTALONES</a></li>
-                    <li><a href="Contactos.html">CONTACTO</a></li>
-                    <li><a href="#">CUENTA</a></li>
-                </ul>
+    <div>
+        <nav> 
+            <H1>LUMINA</H1>
+            <input type="checkbox" id="sidebar-active">
+            <label for="sidebar-active" class="open-sidebar-button">
+                <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" width="35"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+            </label>
+            <div class="links-container">
+                <label for="sidebar-active" class="close-sidebar-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" width="35"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                </label>
+                <a href="index.html">HOME</a>
+                <a href="#">REMERAS</a>
+                <a href="Pantalones.html">PANTALONES</a>
+                <a href="Contactos.html">CONTACTOS</a>
+                <a href="Cuenta.html">CUENTA</a>
         </nav>
-    </header>
+        </div>
+
     <div class="container">
         <h2>Cuenta de Usuario</h2>
         <form action="procesar_formulario.php" method="POST">
@@ -34,8 +41,21 @@
             <input type="submit" value="Registrarse">
         </form>
     </div>
-    <footer class="footer">
-        <p>&copy; 2024 Tienda de Ropa</p>
-    </footer>
+        <footer class="footer">
+            <div class="redes-sociales-container">
+                <a href="https://www.facebook.com/Coderhouse/?locale=es_LA" class="sociales-iconos"></a>
+                <a href="https://www.instagram.com/coderhouse/?igsh=YWVmeDhnMGJydGsy" class="sociales-iconos"></a>
+                <a href="https://twitter.com/coderhouse?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="sociales-iconos"></a>
+                <a href="https://www.tiktok.com/@coderhouse" class="sociales-iconos"></a>
+            
+            </div>
+            <ul class="footer-menu-container">
+                <li class="menu-item">Legal</li> 
+                <li class="menu-item">Cookies</li>
+                <li class="menu-item">Privacy</li>
+            </ul>
+            <span class="copyright">&copy; 2024 Tienda de Ropa LUMINA</span>
+        </footer>
+    </div>
 </body>
 </html>

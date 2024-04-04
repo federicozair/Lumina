@@ -1,107 +1,166 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Russo+One&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
+:root{
+    --color-1: rgb(0, 0, 0);
+    --text-color: rgb(255, 255, 255);
+    --acent-color: rgb(28, 101, 150);
+}
 *{
     padding: 0;
     margin: 0;
 }
-
-
+body{
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+nav h1{
+    color: white;
+    font-size: 45px;
+    margin-right: a;
+}
 nav{
+    height: 60px;
+    background-color:var(--color-1);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-family: "Audiowide", sans-serif;
+}
+.links-container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+nav a{
+    justify-content: flex-end;
+    height: 100%;
+    padding: 0 20px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding-top: 20px;
-    padding-left: 5%;
-    padding-right: 5%;
-    font-weight: bold;
-    background-color: black;
-    font-family: "Audiowide", sans-serif;
-
-}
-h1{
-    color: white;
-    font-size: 55px;
-    font-family: "Audiowide", sans-serif;
-    cursor: pointer;
-}
-ul li{
-    font-size: 30px;
-    display: inline-block;
-    padding: 0px 20px;
-    cursor: pointer;
-
-}
-a{
-    color: white;
     text-decoration: none;
-    font-family: "Russo One", sans-serif;
+    color: var(--text-color)
 }
+nav a:hover{
+    background-color: var(--acent-color)
+}
+nav a .homelink{
+    margin-right: auto;
+}
+nav svg{
+    fill: var(--text-color);
+}
+#sidebar-active{
+    display: none;
+}
+.open-sidebar-button, .close-sidebar-button{
+    pad: 0 20px;
+    display: none;
+}
+
 footer{
-    background-color: black;
-    padding: 20px;
-    text-align: center;
-    align-self: flex-end;
     width: 100%;
-
+    position:relative;
+    bottom: 0;
+    left: 0;
+    padding: 5px;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
-footer p{
-    color: white;
+.redes-sociales-container, .footer-menu-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
 }
-
-
-.titulo{
-    background-color:  rgb(247, 119, 119);
-    justify-content: space-evenly;
-    font-family: "Russo One", sans-serif;
+.footer-menu-container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
     text-align: center;
-    font-size: 60px;
-    color: white;
+}
+.sociales-iconos{
+    height: 50px;
+    width: 50px;
+    border-radius: 10px;
+    border: 1px solid white;
+    background-image: url(redessociales/facebook.png);
+    background-color: #f2f2f2;
+    background-position: center;
+    background-size: 80%;
+    background-repeat: no-repeat;
+    margin: 1rem;
 }
 
-
-.call{
-    background-color: black;
-    padding: 50px;
-    border: 5px solid gray;
-    color: white;
-    width: 80%;
-    font-size: 23px;
-    font-family: "Russo One", sans-serif;
-
+.sociales-iconos:hover{
+    background-color: #ffffff;
+    filter: invert(1);
 }
-.call button{ 
-    padding: 0px;
-    background-color: white;
-    font-size: 30px;
-    color: black;
-    font-family: "Audiowide", sans-serif;
+.sociales-iconos:nth-of-type(2){
+    background-image: url(redessociales/logotipo-de-instagram.png);
+}
+.sociales-iconos:nth-of-type(3){
+    background-image: url(redessociales/simbolo-x.png);
+}
+.sociales-iconos:nth-of-type(4){
+    background-image: url(redessociales/tik-tok.png);
+}
+.footer-menu-container{
+    list-style: none;
+    color: #f2f2f2;
+    font-size: 18px;
+}
+.menu.item{
+    margin:  1rem 1.5rem;
     cursor: pointer;
+    opacity: 0.6;
 }
-.call button:hover{
-    background-color: rgb(139, 139, 139);
-    color: white;
-    scale: 1;
+menu.item:hover{
+    opacity: 1;
 }
-.medio{
-    display:flex;
-    margin-right: 3%;
-    margin-left: 3%;
-    margin-top: 70px;
+.copyright{
+    color: #f2f2f2;
+    opacity: 0.3;
+    text-align: center;
 }
+@media(max-width: 453px){
+    .links-container{
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
 
-.button Gracias{
-    background-color: black;
-    color: white;
-}
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 10;
+        width: 300px;
 
-@media only screen and (max-width:1024px){
-    .video{
-        width: 250px;
+        background-color: var(--color-1);
+        box-shadow: -5px 0 5px rgba(0, 0, 0, 0.25);
+        }
+    nav a{
+        box-sizing: border-box;
+        height: auto;
+        width: 100%;
+        padding: 20px 30px;
+        justify-content: flex-start;
     }
-    .cajadetexto{
-        width: 250px;
-        height: 500px;
+    .open-sidebar-button, .close-sidebar-button{
+        display: block;
+    }
+    #sidebar-active:checked ~ .links-container{
+        display: flex;
+    }
+    nav h1{
+        color: white;
+        font-size: 45px;
+        margin-left:5px;
     }
 }
