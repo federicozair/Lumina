@@ -95,3 +95,13 @@ footer p{
     background-color: black;
     color: white;
 }
+
+@media only screen and (max-width:1024px){
+    .video{
+        width: 250px;
+    }
+    .cajadetexto{
+        width: 250px;
+        height: 500px;
+    }
+}
