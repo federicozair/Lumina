@@ -16,6 +16,7 @@ body{
     position: relative;
 }
 .promo{
+    font-family: "Russo One", sans-serif;
     font-size: 12px;
     padding: 200px;
     display: flex;
@@ -27,6 +28,9 @@ body{
     position: relative;
     z-index: 2;
     color: white;
+}
+.promo h1{
+    
 }
 .promo button{
     cursor: pointer;
@@ -213,6 +217,7 @@ menu.item:hover{
         margin-right: 40%;;
     }
     .promo{
+        font-family: "Russo One", sans-serif;
         font-size: 8px;
         padding: 5px;
         display: flex;
