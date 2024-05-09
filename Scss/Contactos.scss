@@ -1,15 +1,19 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Russo+One&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-$color1:white;
-$color2: black;
 
-*{
-    padding: 0;
-    margin: 0;
-}
+//   colores   //
+$color1: white;
+$color2: black;
+$colorhover: grey;
+
+//   Fuentes de Letras  //
+$fontPrincipal: "Audiowide", sans-serif;
+$fontsecondary: "Russo One", sans-serif;
+$fontThird: Verdana, sans-serif;
+
+
 
 
 :root{
@@ -26,19 +30,64 @@ body{
     width: 100%;
     position: relative;
 }
+.promo{
+    font-family: $fontThird;
+    font-size: 12px;
+    padding: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    margin: auto;
+    position: relative;
+    z-index: 2;
+    color: $color1;
+}
+
+.promo button{
+    cursor: pointer;
+    font-size: 30px;
+    margin: 20px;
+    padding: 20px 40px;
+    background-color: rgb(156, 155, 155);
+    color: $color1;
+}
+
+#hero{
+    min-height: 100vh;
+    position: relative;
+}
+video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.capa{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $color2;
+    opacity: 0.8;
+}
+
 nav h1{
     color: $color1;
     font-size: 45px;
     margin-right: a;
 }
 nav{
-    position: relative;
     height: 60px;
     background-color:var(--color-1);
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    font-family: "Audiowide", sans-serif;
+    font-family: $fontPrincipal;
 }
 .links-container{
     height: 100%;
@@ -72,7 +121,6 @@ nav svg{
     pad: 0 20px;
     display: none;
 }
-
 
 footer{
     width: 100%;
@@ -143,7 +191,7 @@ menu.item:hover{
     opacity: 0.3;
     text-align: center;
 }
-@media(max-width: 480px){
+@media(max-width: 453px){
     .links-container{
         flex-direction: column;
         align-items: flex-start;
@@ -181,4 +229,42 @@ menu.item:hover{
         font-size: 45px;
         margin-right: 40%;;
     }
+    .promo{
+        font-family: $fontThird;
+        font-size: 6px;
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        margin: auto;
+        position: relative;
+        z-index: 2;
+        color: $color1;}
+        .promo button{
+            cursor: pointer;
+            font-size: 20px;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: $colorhover;
+            color: $color1;
+        }
+        .capa{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: $color2;
+            opacity: 0.9;
+        }
+        video{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 }
