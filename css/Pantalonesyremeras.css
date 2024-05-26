@@ -136,7 +136,7 @@ footer {
   width: 50px;
   border-radius: 10px;
   border: 1px solid white;
-  background-image: url(/redessociales/facebook.png);
+  background-image: url(../redessociales/facebook.png);
   background-color: white;
   background-position: center;
   background-size: 80%;
@@ -150,15 +150,15 @@ footer {
 }
 
 .sociales-iconos:nth-of-type(2) {
-  background-image: url(/redessociales/logotipo-de-instagram.png);
+  background-image: url(../redessociales/logotipo-de-instagram.png);
 }
 
 .sociales-iconos:nth-of-type(3) {
-  background-image: url(/redessociales/simbolo-x.png);
+  background-image: url(../redessociales/simbolo-x.png);
 }
 
 .sociales-iconos:nth-of-type(4) {
-  background-image: url(/redessociales/tik-tok.png);
+  background-image: url(../redessociales/tik-tok.png);
 }
 
 .footer-menu-container {
