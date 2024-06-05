@@ -65,49 +65,56 @@ function mostrarProductos(productos) {
     productos.forEach(producto => console.log(`Nombre: ${producto.nombre}, Precio: ${producto.precio}$, Categoría: ${producto.categoria}`));
 }
 
-// Preguntar al usuario si busca Remeras o Pantalones
-let categoriaSeleccionada;
-do {
-    categoriaSeleccionada = prompt("¿Qué categoría de productos desea ver? Ingrese 'Remeras' o 'Pantalones':").toLowerCase();
-} while (categoriaSeleccionada !== 'remeras' && categoriaSeleccionada !== 'pantalones');
+// Función principal para manejar la compra de productos
+function manejarCompra() {
+    // Preguntar al usuario si busca Remeras o Pantalones
+    let categoriaSeleccionada;
+    do {
+        categoriaSeleccionada = prompt("¿Qué categoría de productos desea ver? Ingrese 'Remeras' o 'Pantalones':").toLowerCase();
+    } while (categoriaSeleccionada !== 'remeras' && categoriaSeleccionada !== 'pantalones');
 
-// Preguntar al usuario si desea ordenar de menor a mayor o de mayor a menor
-let ordenSeleccionado;
-do {
-    ordenSeleccionado = prompt("¿Cómo desea ordenar los productos? Ingrese 'menor' para menor a mayor o 'mayor' para mayor a menor:").toLowerCase();
-} while (ordenSeleccionado !== 'menor' && ordenSeleccionado !== 'mayor');
+    // Preguntar al usuario si desea ordenar de menor a mayor o de mayor a menor
+    let ordenSeleccionado;
+    do {
+        ordenSeleccionado = prompt("¿Cómo desea ordenar los productos? Ingrese 'menor' para menor a mayor o 'mayor' para mayor a menor:").toLowerCase();
+    } while (ordenSeleccionado !== 'menor' && ordenSeleccionado !== 'mayor');
 
-let productosFiltrados = ordenarProductosPorPrecio(filtrarProductosPorCategoria(categoriaSeleccionada), ordenSeleccionado);
+    let productosFiltrados = ordenarProductosPorPrecio(filtrarProductosPorCategoria(categoriaSeleccionada), ordenSeleccionado);
 
-alert(`A continuación, una lista de ${categoriaSeleccionada} ordenados por precio en la consola`);
-console.log(`${categoriaSeleccionada.charAt(0).toUpperCase() + categoriaSeleccionada.slice(1)} ordenados por precio de ${ordenSeleccionado === 'menor' ? 'menor a mayor' : 'mayor a menor'}:`);
-mostrarProductos(productosFiltrados);
+    alert(`A continuación, una lista de ${categoriaSeleccionada} ordenados por precio en la consola`);
+    console.log(`${categoriaSeleccionada.charAt(0).toUpperCase() + categoriaSeleccionada.slice(1)} ordenados por precio de ${ordenSeleccionado === 'menor' ? 'menor a mayor' : 'mayor a menor'}:`);
+    mostrarProductos(productosFiltrados);
 
-let seleccion = pedirSeleccion("¿Desea comprar algún producto? SI o NO");
-if (seleccion === "no") {
-    alert("Gracias por mirar, ¡Nos vemos!");
-} else {
-    while (true) {
-        let productoNombre = prompt("Agregar nombre de producto a tu carrito");
-        let productoEncontrado = encontrarProducto(productoNombre);
-        if (productoEncontrado) {
-            let cantidad = parseInt(prompt(`¿Cuántas unidades de ${productoEncontrado.nombre} desea agregar?`), 10);
-            if (!isNaN(cantidad) && cantidad > 0) {
-                agregarAlCarrito(productoEncontrado, cantidad);
+    let seleccion = pedirSeleccion("¿Desea comprar algún producto? SI o NO");
+    if (seleccion === "no") {
+        alert("Gracias por mirar, ¡Nos vemos!");
+    } else {
+        while (true) {
+            let productoNombre = prompt("Agregar nombre de producto a tu carrito");
+            let productoEncontrado = encontrarProducto(productoNombre);
+            if (productoEncontrado) {
+                let cantidad = parseInt(prompt(`¿Cuántas unidades de ${productoEncontrado.nombre} desea agregar?`), 10);
+                if (!isNaN(cantidad) && cantidad > 0) {
+                    agregarAlCarrito(productoEncontrado, cantidad);
+                } else {
+                    alert("Cantidad no válida. Intente nuevamente.");
+                }
             } else {
-                alert("Cantidad no válida. Intente nuevamente.");
+                alert("El producto no se encuentra disponible.");
             }
-        } else {
-            alert("El producto no se encuentra disponible.");
-        }
-        seleccion = pedirSeleccion("¿Desea seguir comprando? SI o NO");
-        if (seleccion === "no") {
-            alert("Gracias por su compra!");
-            alert(`Has comprado ${carrito.length} producto(s).`);
-            alert(`Productos comprados: ${carrito.map(p => p.nombre).join(', ')}`);
-            console.log(carrito.map(p => p.nombre).concat(". ¡Gracias por tu compra!").join(' '));
-            calcularTotal();
-            break;
+            seleccion = pedirSeleccion("¿Desea seguir comprando? SI o NO");
+            if (seleccion === "no") {
+                alert("Gracias por su compra!");
+                alert(`Has comprado ${carrito.length} producto(s).`);
+                alert(`Productos comprados: ${carrito.map(p => p.nombre).join(', ')}`);
+                console.log(carrito.map(p => p.nombre).concat(". ¡Gracias por tu compra!").join(' '));
+                calcularTotal();
+                break;
+            } else {
+                manejarCompra(); 
+            }
         }
     }
 }
+
+manejarCompra();
