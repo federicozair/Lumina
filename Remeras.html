@@ -9,98 +9,98 @@
 </head>
 <body>
     <div>
-    <nav> 
-        <H1>LUMINA</H1>
-        <input type="checkbox" id="sidebar-active">
-        <label for="sidebar-active" class="open-sidebar-button">
-            <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" width="35"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
-        </label>
-        <div class="links-container">
-            <label for="sidebar-active" class="close-sidebar-button">
-                <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" width="35"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+        <nav> 
+            <h1>LUMINA</h1>
+            <input type="checkbox" id="sidebar-active">
+            <label for="sidebar-active" class="open-sidebar-button">
+                <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" width="35"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
             </label>
-            <a href="index.html">HOME</a>
-            <a href="#">REMERAS</a>
-            <a href="Pantalones.html">PANTALONES</a>
-            <a href="Contactos.html">CONTACTOS</a>
-            <a href="Cuenta.html">CUENTA</a>
-            <a href="Carrito.html">CARRITO</a>
-    </nav>
+            <div class="links-container">
+                <label for="sidebar-active" class="close-sidebar-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" width="35"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                </label>
+                <a href="index.html">HOME</a>
+                <a href="#">REMERAS</a>
+                <a href="Pantalones.html">PANTALONES</a>
+                <a href="Contactos.html">CONTACTOS</a>
+                <a href="Cuenta.html">CUENTA</a>
+                <a href="Carrito.html">CARRITO</a>
+            </div>
+        </nav>
     </div>
-<div class="galeria-ropas">
-    <div class="ropa">
-        <img src="Remeras.img/remera (1).jpg" alt="">
-        <h1>Remera oversize Skeleton</h1>
-        <h2>$35</h2>
-        <button>Comprar</button>
+    <div class="filtros-container">
+        <div class="dropdown-container">
+            <label for="ordenar-precio">Ordenar precio:</label>
+            <select id="ordenar-precio">
+                <option value="menor">Menor a Mayor</option>
+                <option value="mayor">Mayor a Menor</option>
+            </select>
+        </div>
+        <div class="buscar-container">
+            <label for="buscar-producto">Buscar producto:</label>
+            <input type="text" id="buscar-producto" placeholder="Ingrese nombre del producto">
+        </div>
     </div>
-    <div class="ropa">
-        <img src="Remeras.img/remera (2).jpg" alt="">
-        <h1>Remera oversize Flash</h1>
-        <h2>$25</h2>
-        <button>Comprar</button>
+    <div class="galeria-ropas" id="galeriaRopas">
+        <div class="ropa" data-nombre="Remera oversize Skeleton" data-precio="35" data-img="Remeras.img/remera (1).jpg">
+            <img src="Remeras.img/remera (1).jpg" alt="">
+            <h1>Remera oversize Skeleton</h1>
+            <h2>$35</h2>
+            <button>Añadir al Carrito</button>
+        </div>
+        <div class="ropa" data-nombre="Remera oversize Flash" data-precio="25" data-img="Remeras.img/remera (2).jpg">
+            <img src="Remeras.img/remera (2).jpg" alt="">
+            <h1>Remera oversize Flash</h1>
+            <h2>$25</h2>
+            <button>Añadir al Carrito</button>
+        </div>
+        <div class="ropa" data-nombre="Remera oversize Skyline" data-precio="20" data-img="Remeras.img/remera (7).jpg">
+            <img src="Remeras.img/remera (7).jpg" alt="">
+            <h1>Remera oversize Skyline</h1>
+            <h2>$20</h2>
+            <button>Añadir al Carrito</button>
+        </div>
+        <div class="ropa" data-nombre="Remera oversize Butterfly" data-precio="30" data-img="Remeras.img/remera (4).jpg">
+            <img src="Remeras.img/remera (4).jpg" alt="">
+            <h1>Remera oversize Butterfly</h1>
+            <h2>$30</h2>
+            <button>Añadir al Carrito</button>
+        </div>
+        <div class="ropa" data-nombre="Remera oversize Moon" data-precio="20" data-img="Remeras.img/remera (5).jpg">
+            <img src="Remeras.img/remera (5).jpg" alt="">
+            <h1>Remera oversize Moon</h1>
+            <h2>$20</h2>
+            <button>Añadir al Carrito</button>
+        </div>
+        <div class="ropa" data-nombre="Remera oversize Angel" data-precio="25" data-img="Remeras.img/remera (9).jpg">
+            <img src="Remeras.img/remera (9).jpg" alt="">
+            <h1>Remera oversize Angel</h1>
+            <h2>$25</h2>
+            <button>Añadir al Carrito</button>
+        </div>
+        <div class="ropa" data-nombre="Remera oversize Purple" data-precio="30" data-img="Remeras.img/remera (6).jpg">
+            <img src="Remeras.img/remera (6).jpg" alt="">
+            <h1>Remera oversize Purple</h1>
+            <h2>$30</h2>
+            <button>Añadir al Carrito</button>
+        </div>
+        <div class="ropa" data-nombre="Remera oversize Universe" data-precio="35" data-img="Remeras.img/remera (8).jpg">
+            <img src="Remeras.img/remera (8).jpg" alt="">
+            <h1>Remera oversize Universe</h1>
+            <h2>$35</h2>
+            <button>Añadir al Carrito</button>
+        </div>
+        <div class="ropa" data-nombre="Remera oversize Moonlight" data-precio="30" data-img="Remeras.img/remera (4).jpg">
+            <img src="Remeras.img/remera (4).jpg" alt="">
+            <h1>Remera oversize Moonlight</h1>
+            <h2>$30</h2>
+            <button>Añadir al Carrito</button>
+        </div>
     </div>
-    <div class="ropa">
-        <img src="Remeras.img/remera (7).jpg" alt="">
-        <h1>Remera oversize Skyline</h1>
-        <h2>$20</h2>
-        <button>Comprar</button>
-    </div>
-    <div class="ropa">
-        <img src="Remeras.img/remera (4).jpg" alt="">
-        <h1>Remera oversize Butterfly</h1>
-        <h2>$30</h2>
-        <button>Comprar</button>
-    </div>
-    <div class="ropa">
-        <img src="Remeras.img/remera (5).jpg" alt="">
-        <h1>Remera oversize Moon</h1>
-        <h2>$20</h2>
-        <button>Comprar</button>
-    </div>
-    <div class="ropa">
-        <img src="Remeras.img/remera (9).jpg" alt="">
-        <h1>Remera oversize Angel</h1>
-        <h2>$25</h2>
-        <button>Comprar</button>
-    </div>
-    <div class="ropa">
-        <img src="Remeras.img/remera (6).jpg" alt="">
-        <h1>Remera oversize Purple</h1>
-        <h2>$30</h2>
-        <button>Comprar</button>
-    </div>
-    <div class="ropa">
-        <img src="Remeras.img/remera (5).jpg" alt="">
-        <h1>Remera oversize Moon</h1>
-        <h2>$20</h2>
-        <button>Comprar</button>
-    </div>
-    <div class="ropa">
-        <img src="Remeras.img/remera (1).jpg" alt="">
-        <h1>Remera oversize Skeleton</h1>
-        <h2>$35</h2>
-        <button>Comprar</button>
-    </div>
-    <div class="ropa">
-        <img src="Remeras.img/remera (8).jpg" alt="">
-        <h1>Remera oversize Universe</h1>
-        <h2>$35</h2>
-        <button>Comprar</button>
-    </div>
-    <div class="ropa">
-        <img src="Remeras.img/remera (4).jpg" alt="">
-        <h1>Remera oversize Butterfly</h1>
-        <h2>$30</h2>
-        <button>Comprar</button>
-    </div>
-    <div class="ropa">
-        <img src="Remeras.img/remera (9).jpg" alt="">
-        <h1>Remera oversize Angel</h1>
-        <h2>$25</h2>
-        <button>Comprar</button>
-    </div>
-</div>
+    <div id="mensaje-no-productos" style="display:none;">No se encontraron productos</div>
+
+
+    
     <footer class="footer">
         <div class="redes-sociales-container">
             <a href="https://www.facebook.com/Coderhouse/?locale=es_LA" class="sociales-iconos"></a>
@@ -116,6 +116,6 @@
         </ul>
         <span class="copyright">&copy; 2024 Tienda de Ropa LUMINA</span>
     </footer>
-</div>
+    <script src="js/Productos.js"></script>
 </body>
 </html>

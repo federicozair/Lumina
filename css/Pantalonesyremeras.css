@@ -183,6 +183,69 @@ menu.item:hover {
   text-align: center;
 }
 
+        /* Estilos para el contenedor principal */
+        .container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+      }
+
+      /* Estilos para el contenedor de la barra de búsqueda y el filtro de ordenar */
+      .search-filter-container {
+          display: flex;
+          align-items: center;
+          margin-bottom: 10px;
+      }
+
+      /* Estilos para el campo de búsqueda */
+      #search-product {
+          padding: 8px;
+          width: 200px;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+          margin-right: 10px;
+      }
+
+      /* Estilos para el dropdown de ordenar por precio */
+      #sort-price {
+          padding: 8px;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+      }
+
+      /* Estilos para el mensaje de error */
+      #no-products-message {
+          display: none;
+          color: red;
+          margin-bottom: 10px;
+      }
+
+      /* Estilos para los botones de "mayor a menor" y "menor a mayor" */
+      .sort-options {
+          display: flex;
+          gap: 10px;
+          margin-bottom: 10px;
+      }
+
+      .sort-option {
+          padding: 8px 12px;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+          cursor: pointer;
+          background-color: #f0f0f0;
+      }
+
+      .sort-option:hover {
+          background-color: #e0e0e0;
+      }
+
+      .sort-option.active {
+          background-color: #ddd;
+      }
+
+
 @media (max-width: 453px) {
   .links-container {
     flex-direction: column;

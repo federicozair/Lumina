@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width initial-scale=1.0">
     <title>Carrito de Compras</title>
-    <link rel="stylesheet" href="carrito.css">
+    <link rel="stylesheet" href="css/carrito.css">
 </head>
 <body>
     <div>
@@ -23,32 +23,29 @@
                 <a href="Cuenta.html">CUENTA</a>
                 <a href="#">CARRITO</a>
         </nav>
-    <h1>Carrito de Compras</h1>
-    <div class="productos">
-        <h2>Productos Disponibles</h2>
-        <ul id="lista-productos">
-            <li>Pantalon oversize Snow</li> 
-            <li>Pantalon oversize Jean</li>
-            <li>Pantalon oversize Skyblue</li>
-            <li>Pantalon oversize 014</li>
-            <li>Pantalon oversize Military</li>
-            <li>Remera oversize Skeleton</li>
-            <li>Remera oversize Flash</li> 
-            <li>Remera oversize Skyline</li>
-            <li>Remera oversize Butterfly</li>  
-            <li>Remera oversize Moon</li>
-            <li>Remera oversize Angel</li>
-            <li>Remera oversize Purple</li>
-            <li>Remera oversize Universe</li> 
-        </ul>
     </div>
-    <div class="carrito">
-        <h2>Tu Carrito</h2>
-        <ul id="lista-carrito">
-            Lista de carrito en la consola
-        </ul>
-        <p id="total"> el total esta en la consola</p>
+
+    <div class="carrito-container">
+        <h2>Carrito de Compras</h2>
+        <div class="carrito-items" id="carritoItems">
+            
+        </div>
+        <div class="total-container">
+            <h3>Total: $<span id="totalCarrito">0</span></h3>
+        </div>
+        <button id="vaciarCarrito">Vaciar Carrito</button>
     </div>
+    <div class="modal hidden" id="modal">
+        <div class="modal-content">
+            <h3>Datos de la Tarjeta</h3>
+            <input type="text" id="cardName" placeholder="Nombre en la tarjeta">
+            <input type="text" id="cardNumber" placeholder="Número de la tarjeta">
+            <input type="text" id="cardExpiry" placeholder="Fecha de vencimiento (MM/AA)">
+            <input type="text" id="cardCVC" placeholder="CVC">
+            <button id="confirmarCompra">Confirmar Compra</button>
+        </div>
+    </div>
+
     <script src="js/Carrito.js" defer></script>
     
 </body>

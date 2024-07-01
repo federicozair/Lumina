@@ -27,57 +27,69 @@
             <a href="Carrito.html">CARRITO</a>
     </nav>
     </div>
-<div class="galeria-ropas">
-    <div class="ropa">
-        <img src="Pantalones.img/Pantalones (10).jpg" alt="">
-        <h1>Pantalon oversize Jean</h1>
-        <h2>$30</h2>
-        <button>Comprar</button>
+    <div class="filtros-container">
+        <div class="dropdown-container">
+            <label for="ordenar-precio">Ordenar precio:</label>
+            <select id="ordenar-precio">
+                <option value="menor">Menor a Mayor</option>
+                <option value="mayor">Mayor a Menor</option>
+            </select>
+        </div>
+        <div class="buscar-container">
+            <label for="buscar-producto">Buscar producto:</label>
+            <input type="text" id="buscar-producto" placeholder="Ingrese nombre del producto">
+        </div>
     </div>
-    <div class="ropa">
-        <img src="Pantalones.img/Pantlaones 7.jpg" alt="">
-        <h1>Pantalon oversize Snow</h1>
-        <h2>$20</h2>
-        <button>Comprar</button>
+    <div class="galeria-ropas" id="galeriaRopas">
+        <div class="ropa" data-nombre="Pantalon oversize Jean" data-precio="30" data-img="Pantalones.img/Pantalones (10).jpg">
+            <img src="Pantalones.img/Pantalones (10).jpg" alt="">
+            <h1>Pantalon oversize Jean</h1>
+            <h2>$30</h2>
+            <button>Comprar</button>
+        </div>
+        <div class="ropa" data-nombre="Pantalon oversize Snow" data-precio="20" data-img="Pantalones.img/Pantlaones 7.jpg">
+            <img src="Pantalones.img/Pantlaones 7.jpg" alt="">
+            <h1>Pantalon oversize Snow</h1>
+            <h2>$20</h2>
+            <button>Comprar</button>
+        </div>
+        <div class="ropa" data-nombre="Pantalon oversize Skyblue" data-precio="40" data-img="Pantalones.img/Pantalones (9).jpg">
+            <img src="Pantalones.img/Pantalones (9).jpg" alt="">
+            <h1>Pantalon oversize Skyblue</h1>
+            <h2>$40</h2>
+            <button>Comprar</button>
+        </div>
+        <div class="ropa" data-nombre="Pantalon oversize Snow" data-precio="20" data-img="Pantalones.img/Pantlaones 7.jpg">
+            <img src="Pantalones.img/Pantlaones 7.jpg" alt="">
+            <h1>Pantalon oversize Snow</h1>
+            <h2>$20</h2>
+            <button>Comprar</button>
+        </div>
+        <div class="ropa" data-nombre="Pantalon oversize 014" data-precio="35" data-img="Pantalones.img/Pantalones (8).jpg">
+            <img src="Pantalones.img/Pantalones (8).jpg" alt="">
+            <h1>Pantalon oversize 014</h1>
+            <h2>$35</h2>
+            <button>Comprar</button>
+        </div>
+        <div class="ropa" data-nombre="Pantalon oversize Snow" data-precio="20" data-img="Pantalones.img/Pantlaones 7.jpg">
+            <img src="Pantalones.img/Pantlaones 7.jpg" alt="">
+            <h1>Pantalon oversize Snow</h1>
+            <h2>$20</h2>
+            <button>Comprar</button>
+        </div>
+        <div class="ropa" data-nombre="Pantalon oversize Military" data-precio="30" data-img="Pantalones.img/Pantalones (11).jpg">
+            <img src="Pantalones.img/Pantalones (11).jpg" alt="">
+            <h1>Pantalon oversize Military</h1>
+            <h2>$30</h2>
+            <button>Comprar</button>
+        </div>
+        <div class="ropa" data-nombre="Pantalon oversize 014" data-precio="35" data-img="Pantalones.img/Pantalones (8).jpg">
+            <img src="Pantalones.img/Pantalones (8).jpg" alt="">
+            <h1>Pantalon oversize 014</h1>
+            <h2>$35</h2>
+            <button>Comprar</button>
+        </div>
     </div>
-    <div class="ropa">
-        <img src="Pantalones.img/Pantalones (9).jpg" alt="">
-        <h1>Pantalon oversize Skyblue</h1>
-        <h2>$40</h2>
-        <button>Comprar</button>
-    </div>
-    <div class="ropa">
-        <img src="Pantalones.img/Pantlaones 7.jpg" alt="">
-        <h1>Pantalon oversize Snow</h1>
-        <h2>$20</h2>
-        <button>Comprar</button>
-    </div>
-    <div class="ropa">
-        <img src="Pantalones.img/Pantalones (8).jpg" alt="">
-        <h1>Pantalon oversize 014</h1>
-        <h2>$35</h2>
-        <button>Comprar</button>
-    </div>
-    <div class="ropa">
-        <img src="Pantalones.img/Pantlaones 7.jpg" alt="">
-        <h1>Pantalon oversize Snow</h1>
-        <h2>$20</h2>
-        <button>Comprar</button>
-    </div>
-    <div class="ropa">
-        <img src="Pantalones.img/Pantalones (11).jpg" alt="">
-        <h1>Pantalon oversize Military</h1>
-        <h2>$30</h2>
-        <button>Comprar</button>
-    </div>
-    <div class="ropa">
-        <img src="Pantalones.img/Pantalones (8).jpg" alt="">
-        <h1>Pantalon oversize 014</h1>
-        <h2>$35</h2>
-        <button>Comprar</button>
-    </div>
-
-</div>
     <footer class="footer">
         <div class="redes-sociales-container">
             <a href="https://www.facebook.com/Coderhouse/?locale=es_LA" class="sociales-iconos"></a>
@@ -94,5 +106,6 @@
         <span class="copyright">&copy; 2024 Tienda de Ropa LUMINA</span>
     </footer>
 </div>
+<script src="js/Productos.js"></script>
 </body>
 </html>

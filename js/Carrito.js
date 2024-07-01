@@ -1,120 +1,92 @@
-const productos = [
-    { nombre: "Pantalon oversize snow", precio: 20, categoria: "Pantalones" },
-    { nombre: "Pantalon oversize Jean", precio: 30, categoria: "Pantalones" },
-    { nombre: "Pantalon oversize Skyblue", precio: 40, categoria: "Pantalones" },
-    { nombre: "Pantalon oversize 014", precio: 35, categoria: "Pantalones" },
-    { nombre: "Pantalon oversize Military", precio: 30, categoria: "Pantalones" },
-    { nombre: "Remera oversize Skeleton", precio: 35, categoria: "Remeras" },
-    { nombre: "Remera oversize Flash", precio: 25, categoria: "Remeras" },
-    { nombre: "Remera oversize Skyline", precio: 20, categoria: "Remeras" },
-    { nombre: "Remera oversize Butterfly", precio: 30, categoria: "Remeras" },
-    { nombre: "Remera oversize Moon", precio: 20, categoria: "Remeras" },
-    { nombre: "Remera oversize Angel", precio: 25, categoria: "Remeras" },
-    { nombre: "Remera oversize Purple", precio: 30, categoria: "Remeras" },
-    { nombre: "Remera oversize Universe", precio: 35, categoria: "Remeras" },
-];
+document.addEventListener('DOMContentLoaded', () => {
+    const carritoItemsContainer = document.getElementById('carritoItems');
+    const totalCarritoSpan = document.getElementById('totalCarrito');
+    const vaciarCarritoButton = document.getElementById('vaciarCarrito');
 
-let carrito = [];
+    function cargarCarrito() {
+        let carrito = localStorage.getItem('carrito');
+        carrito = carrito ? JSON.parse(carrito) : [];
 
-// Función para ordenar productos por precio
-function ordenarProductosPorPrecio(productos, orden) {
-    return productos.slice().sort((a, b) => orden === 'menor' ? a.precio - b.precio : b.precio - a.precio);
-}
+        carritoItemsContainer.innerHTML = '';
+        let total = 0;
 
-// Función para pedir selección al usuario
-function pedirSeleccion(mensaje) {
-    let seleccion;
-    do {
-        seleccion = prompt(mensaje).toLowerCase();
-    } while (seleccion !== "si" && seleccion !== "no");
-    return seleccion;
-}
+        carrito.forEach((producto, index) => {
+            const productoDiv = document.createElement('div');
+            productoDiv.classList.add('carrito-item');
 
-// Función para encontrar un producto por nombre
-function encontrarProducto(nombre) {
-    return productos.find(producto => producto.nombre.toLowerCase() === nombre.toLowerCase());
-}
+            productoDiv.innerHTML = `
+                <img src="${producto.img}" alt="${producto.nombre}">
+                <h4>${producto.nombre}</h4>
+                <p>Precio: $${producto.precio}</p>
+                <p>Cantidad: <button class="disminuir-cantidad" data-index="${index}">-</button> ${producto.cantidad} <button class="aumentar-cantidad" data-index="${index}">+</button></p>
+                <button class="eliminar-producto" data-index="${index}">Eliminar</button>
+            `;
 
-// Función para agregar un producto al carrito
-function agregarAlCarrito(producto, cantidad) {
-    carrito.push({ ...producto, cantidad });
-    alert(`${cantidad} unidad(es) de ${producto.nombre} ha(n) sido agregada(s) a tu carrito.`);
-}
+            carritoItemsContainer.appendChild(productoDiv);
+            total += producto.precio * producto.cantidad;
+        });
 
-// Función para calcular el total del carrito
-function calcularTotal() {
-    let total = carrito.reduce((acc, { precio, cantidad }) => acc + precio * cantidad, 0);
-    let totalProductos = carrito.reduce((acc, { cantidad }) => acc + cantidad, 0);
-    carrito.forEach(({ nombre, precio, cantidad }) => {
-        alert(`Producto: ${nombre}, Precio: ${precio}$, Cantidad: ${cantidad}`);
-        console.log(`Producto: ${nombre}, Precio: ${precio}$, Cantidad: ${cantidad}`);
-    });
-    alert(`Total de productos: ${totalProductos}`);
-    alert(`Total a pagar: ${total}$`);
-    console.log(`Total de productos: ${totalProductos}`);
-    console.log(`Total a pagar: ${total}$`);
-}
-
-// Función para filtrar productos por categoría
-function filtrarProductosPorCategoria(categoria) {
-    return productos.filter(producto => producto.categoria.toLowerCase() === categoria.toLowerCase());
-}
-
-// Función para mostrar todos los productos
-function mostrarProductos(productos) {
-    productos.forEach(producto => console.log(`Nombre: ${producto.nombre}, Precio: ${producto.precio}$, Categoría: ${producto.categoria}`));
-}
-
-// Función principal para manejar la compra de productos
-function manejarCompra() {
-    // Preguntar al usuario si busca Remeras o Pantalones
-    let categoriaSeleccionada;
-    do {
-        categoriaSeleccionada = prompt("¿Qué categoría de productos desea ver? Ingrese 'Remeras' o 'Pantalones':").toLowerCase();
-    } while (categoriaSeleccionada !== 'remeras' && categoriaSeleccionada !== 'pantalones');
-
-    // Preguntar al usuario si desea ordenar de menor a mayor o de mayor a menor
-    let ordenSeleccionado;
-    do {
-        ordenSeleccionado = prompt("¿Cómo desea ordenar los productos? Ingrese 'menor' para menor a mayor o 'mayor' para mayor a menor:").toLowerCase();
-    } while (ordenSeleccionado !== 'menor' && ordenSeleccionado !== 'mayor');
-
-    let productosFiltrados = ordenarProductosPorPrecio(filtrarProductosPorCategoria(categoriaSeleccionada), ordenSeleccionado);
-
-    alert(`A continuación, una lista de ${categoriaSeleccionada} ordenados por precio en la consola`);
-    console.log(`${categoriaSeleccionada.charAt(0).toUpperCase() + categoriaSeleccionada.slice(1)} ordenados por precio de ${ordenSeleccionado === 'menor' ? 'menor a mayor' : 'mayor a menor'}:`);
-    mostrarProductos(productosFiltrados);
-
-    let seleccion = pedirSeleccion("¿Desea comprar algún producto? SI o NO");
-    if (seleccion === "no") {
-        alert("Gracias por mirar, ¡Nos vemos!");
-    } else {
-        while (true) {
-            let productoNombre = prompt("Agregar nombre de producto a tu carrito");
-            let productoEncontrado = encontrarProducto(productoNombre);
-            if (productoEncontrado) {
-                let cantidad = parseInt(prompt(`¿Cuántas unidades de ${productoEncontrado.nombre} desea agregar?`), 10);
-                if (!isNaN(cantidad) && cantidad > 0) {
-                    agregarAlCarrito(productoEncontrado, cantidad);
-                } else {
-                    alert("Cantidad no válida. Intente nuevamente.");
-                }
-            } else {
-                alert("El producto no se encuentra disponible.");
-            }
-            seleccion = pedirSeleccion("¿Desea seguir comprando? SI o NO");
-            if (seleccion === "no") {
-                alert("Gracias por su compra!");
-                alert(`Has comprado ${carrito.length} producto(s).`);
-                alert(`Productos comprados: ${carrito.map(p => p.nombre).join(', ')}`);
-                console.log(carrito.map(p => p.nombre).concat(". ¡Gracias por tu compra!").join(' '));
-                calcularTotal();
-                break;
-            } else {
-                manejarCompra(); 
-            }
-        }
+        totalCarritoSpan.textContent = total.toFixed(2);
     }
-}
 
-manejarCompra();
+    function eliminarProducto(index) {
+        let carrito = localStorage.getItem('carrito');
+        carrito = carrito ? JSON.parse(carrito) : [];
+
+        carrito.splice(index, 1);
+
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        cargarCarrito();
+    }
+
+    function actualizarCantidad(index, cantidad) {
+        let carrito = localStorage.getItem('carrito');
+        carrito = carrito ? JSON.parse(carrito) : [];
+
+        if (cantidad === 0) {
+            carrito.splice(index, 1);
+        } else {
+            carrito[index].cantidad = cantidad;
+        }
+
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        cargarCarrito();
+    }
+
+    carritoItemsContainer.addEventListener('click', (event) => {
+        const index = event.target.getAttribute('data-index');
+
+        if (event.target.classList.contains('eliminar-producto')) {
+            eliminarProducto(index);
+        } else if (event.target.classList.contains('aumentar-cantidad')) {
+            let carrito = JSON.parse(localStorage.getItem('carrito'));
+            const nuevaCantidad = carrito[index].cantidad + 1;
+            actualizarCantidad(index, nuevaCantidad);
+        } else if (event.target.classList.contains('disminuir-cantidad')) {
+            let carrito = JSON.parse(localStorage.getItem('carrito'));
+            const nuevaCantidad = carrito[index].cantidad - 1;
+            actualizarCantidad(index, nuevaCantidad);
+        }
+    });
+
+    vaciarCarritoButton.addEventListener('click', () => {
+        localStorage.removeItem('carrito');
+        cargarCarrito();
+    });
+
+    cargarCarrito();
+});
+
+function agregarAlCarrito(nombre, precio, img) {
+    let carrito = localStorage.getItem('carrito');
+    carrito = carrito ? JSON.parse(carrito) : [];
+
+    const productoExistente = carrito.find(producto => producto.nombre === nombre);
+    if (productoExistente) {
+        productoExistente.cantidad += 1;
+    } else {
+        carrito.push({ nombre, precio, img, cantidad: 1 });
+    }
+
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+}
