@@ -62,44 +62,44 @@ console.log('Productos disponibles:', productos);
 document.addEventListener("DOMContentLoaded", () => {
     const galeriaRopas = document.getElementById('galeriaRopas');
     const ropas = Array.from(galeriaRopas.getElementsByClassName('ropa'));
-    const sortPriceDropdown = document.getElementById('ordenar-precio');
-    const searchProductInput = document.getElementById('buscar-producto');
-    const noProductsMessage = document.getElementById('no-products-message');
-    
+    const ordenarPrecioDropdown = document.getElementById('ordenar-precio');
+    const buscarProductoInput = document.getElementById('buscar-producto');
+    const mensajeNoProductos = document.getElementById('mensaje-no-productos');
+
     function mostrarProductos(productos) {
         galeriaRopas.innerHTML = '';
         productos.forEach(ropa => galeriaRopas.appendChild(ropa));
     }
 
-    sortPriceDropdown.addEventListener('change', () => {
-        const sortOrder = sortPriceDropdown.value;
+    ordenarPrecioDropdown.addEventListener('change', () => {
+        const orden = ordenarPrecioDropdown.value;
         
         ropas.sort((a, b) => {
             const precioA = parseFloat(a.querySelector('h2').innerText.replace('$', ''));
             const precioB = parseFloat(b.querySelector('h2').innerText.replace('$', ''));
-            return sortOrder === 'menor' ? precioA - precioB : precioB - precioA;
+            return orden === 'menor' ? precioA - precioB : precioB - precioA;
         });
 
         mostrarProductos(ropas);
     });
 
-    searchProductInput.addEventListener('input', () => {
-        const searchValue = searchProductInput.value.toLowerCase();
-        const filteredRopas = ropas.filter(ropa => ropa.querySelector('h1').innerText.toLowerCase().includes(searchValue));
-        mostrarProductos(filteredRopas);
+    buscarProductoInput.addEventListener('input', () => {
+        const valorBusqueda = buscarProductoInput.value.toLowerCase();
+        const ropasFiltradas = ropas.filter(ropa => ropa.querySelector('h1').innerText.toLowerCase().includes(valorBusqueda));
+        mostrarProductos(ropasFiltradas);
 
-        
-        if (filteredRopas.length > 0) {
+        if (ropasFiltradas.length > 0) {
+            mensajeNoProductos.style.display = 'none';
+        } else {
+            mensajeNoProductos.style.display = 'block';
         }
     });
-});
 
-document.addEventListener('DOMContentLoaded', () => {
-    const addToCartButtons = document.querySelectorAll('.ropa button');
+    const botonesAgregarCarrito = document.querySelectorAll('.ropa button');
 
-    addToCartButtons.forEach(button => {
-        button.addEventListener('click', (event) => {
-            const productoDiv = event.target.closest('.ropa');
+    botonesAgregarCarrito.forEach(boton => {
+        boton.addEventListener('click', (evento) => {
+            const productoDiv = evento.target.closest('.ropa');
             const nombre = productoDiv.getAttribute('data-nombre');
             const precio = productoDiv.getAttribute('data-precio');
             const img = productoDiv.getAttribute('data-img');
@@ -109,10 +109,10 @@ document.addEventListener('DOMContentLoaded', () => {
             let carrito = localStorage.getItem('carrito');
             carrito = carrito ? JSON.parse(carrito) : [];
 
-            const existingProduct = carrito.find(item => item.nombre === producto.nombre);
+            const productoExistente = carrito.find(item => item.nombre === producto.nombre);
 
-            if (existingProduct) {
-                existingProduct.cantidad += 1;
+            if (productoExistente) {
+                productoExistente.cantidad += 1;
             } else {
                 carrito.push(producto);
             }
@@ -122,58 +122,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const searchInput = document.getElementById('buscar-producto');
-    const noProductsMessage = document.getElementById('no-products-message');
-
-    searchInput.addEventListener('input', () => {
-        const searchValue = searchInput.value.toLowerCase();
-        const productos = document.querySelectorAll('.ropa');
-        let productosVisible = false;
-
-        productos.forEach(producto => {
-            const nombre = producto.getAttribute('data-nombre').toLowerCase();
-            if (nombre.includes(searchValue)) {
-                producto.style.display = 'block';
-                productosVisible = true;
-            } else {
-                producto.style.display = 'none';
-            }
-        });
-
-        if (productosVisible) {
-            noProductsMessage.style.display = 'none';
-        } else {
-            noProductsMessage.style.display = 'block';
-        }
-    });
-
-    const sortPriceSelect = document.getElementById('ordenar-precio');
-    sortPriceSelect.addEventListener('change', () => {
+    const ordenarPrecioSelect = document.getElementById('ordenar-precio');
+    ordenarPrecioSelect.addEventListener('change', () => {
         const productos = Array.from(document.querySelectorAll('.ropa'));
-        const container = document.getElementById('galeriaRopas');
-        const sortOrder = sortPriceSelect.value;
+        const contenedor = document.getElementById('galeriaRopas');
+        const orden = ordenarPrecioSelect.value;
 
         productos.sort((a, b) => {
             const precioA = parseFloat(a.getAttribute('data-precio'));
             const precioB = parseFloat(b.getAttribute('data-precio'));
 
-            return sortOrder === 'menor' ? precioA - precioB : precioB - precioA;
+            return orden === 'menor' ? precioA - precioB : precioB - precioA;
         });
 
-        productos.forEach(producto => container.appendChild(producto));
+        productos.forEach(producto => contenedor.appendChild(producto));
     });
 });
-        function agregarAlCarrito(nombre, precio, img) {
-            let carrito = localStorage.getItem('carrito');
-            carrito = carrito ? JSON.parse(carrito) : [];
 
-            const productoExistente = carrito.find(producto => producto.nombre === nombre);
-            if (productoExistente) {
-                productoExistente.cantidad += 1;
-            } else {
-                carrito.push({ nombre, precio, img, cantidad: 1 });
-            }
+function agregarAlCarrito(nombre, precio, img) {
+    let carrito = localStorage.getItem('carrito');
+    carrito = carrito ? JSON.parse(carrito) : [];
 
-            localStorage.setItem('carrito', JSON.stringify(carrito));
-        }
-        
+    const productoExistente = carrito.find(producto => producto.nombre === nombre);
+    if (productoExistente) {
+        productoExistente.cantidad += 1;
+    } else {
+        carrito.push({ nombre, precio, img, cantidad: 1 });
+    }
+
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+}
