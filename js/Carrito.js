@@ -1,7 +1,12 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     const carritoItemsContainer = document.getElementById('carritoItems');
     const totalCarritoSpan = document.getElementById('totalCarrito');
     const vaciarCarritoButton = document.getElementById('vaciarCarrito');
+    const finalizarCompraButton = document.getElementById('FinalizarCompra');
+    const modal = document.getElementById('modal');
+    const closeButton = document.querySelector('.close-button');
+    const formularioCompra = document.getElementById('formularioCompra');
 
     function cargarCarrito() {
         let carrito = localStorage.getItem('carrito');
@@ -72,6 +77,39 @@ document.addEventListener('DOMContentLoaded', () => {
     vaciarCarritoButton.addEventListener('click', () => {
         localStorage.removeItem('carrito');
         cargarCarrito();
+    });
+
+    // Evento para el botón de finalizar compra
+    finalizarCompraButton.addEventListener('click', () => {
+        modal.style.display = 'block';
+    });
+
+    closeButton.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+
+    formularioCompra.addEventListener('submit', (event) => {
+        event.preventDefault();
+        localStorage.removeItem('carrito');
+        cargarCarrito();
+        modal.style.display = 'none';
+
+        // Mostrar notificación con Toastify
+        Toastify({
+            text: "Compra finalizada con éxito",
+            duration: 3000,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            backgroundColor: "#4caf50",
+            stopOnFocus: true,
+            onClick: function(){}
+        }).showToast();
     });
 
     cargarCarrito();

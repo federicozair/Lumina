@@ -1,64 +1,3 @@
-const productos = [
-    {
-        id: 1,
-        nombre: 'Remera oversize Skeleton',
-        precio: 35,
-        imagen: 'Remeras.img/remera (1).jpg'
-    },
-    {
-        id: 2,
-        nombre: 'Remera oversize Flash',
-        precio: 25,
-        imagen: 'Remeras.img/remera (2).jpg'
-    },
-    {
-        id: 3,
-        nombre: 'Remera oversize Skyline',
-        precio: 20,
-        imagen: 'Remeras.img/remera (7).jpg'
-    },
-    {
-        id: 4,
-        nombre: 'Remera oversize Butterfly',
-        precio: 30,
-        imagen: 'Remeras.img/remera (4).jpg'
-    },
-    {
-        id: 5,
-        nombre: 'Remera oversize Moon',
-        precio: 20,
-        imagen: 'Remeras.img/remera (5).jpg'
-    },
-    {
-        id: 6,
-        nombre: 'Remera oversize Angel',
-        precio: 25,
-        imagen: 'Remeras.img/remera (9).jpg'
-    },
-    {
-        id: 7,
-        nombre: 'Remera oversize Purple',
-        precio: 30,
-        imagen: 'Remeras.img/remera (6).jpg'
-    },
-    {
-        id: 8,
-        nombre: 'Remera oversize Universe',
-        precio: 35,
-        imagen: 'Remeras.img/remera (8).jpg'
-    },
-    {
-        id: 9,
-        nombre: 'Remera oversize Moonlight',
-        precio: 30,
-        imagen: 'Remeras.img/remera (4).jpg'
-    }
-];
-
-console.log('Productos disponibles:', productos);
-
-
-
 document.addEventListener("DOMContentLoaded", () => {
     const galeriaRopas = document.getElementById('galeriaRopas');
     const ropas = Array.from(galeriaRopas.getElementsByClassName('ropa'));
@@ -118,37 +57,17 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             localStorage.setItem('carrito', JSON.stringify(carrito));
-            alert('Producto añadido al carrito');
+
+            
+            Toastify({
+                text: "Producto añadido al carrito",
+                duration: 3000,
+                gravity: "bottom", 
+                position: "right", 
+                backgroundColor:"linear-gradient(to right, #00b09b, #96c93d)",
+                stopOnFocus: true, 
+                onClick: function(){} 
+            }).showToast();
         });
-    });
-
-    const ordenarPrecioSelect = document.getElementById('ordenar-precio');
-    ordenarPrecioSelect.addEventListener('change', () => {
-        const productos = Array.from(document.querySelectorAll('.ropa'));
-        const contenedor = document.getElementById('galeriaRopas');
-        const orden = ordenarPrecioSelect.value;
-
-        productos.sort((a, b) => {
-            const precioA = parseFloat(a.getAttribute('data-precio'));
-            const precioB = parseFloat(b.getAttribute('data-precio'));
-
-            return orden === 'menor' ? precioA - precioB : precioB - precioA;
-        });
-
-        productos.forEach(producto => contenedor.appendChild(producto));
     });
 });
-
-function agregarAlCarrito(nombre, precio, img) {
-    let carrito = localStorage.getItem('carrito');
-    carrito = carrito ? JSON.parse(carrito) : [];
-
-    const productoExistente = carrito.find(producto => producto.nombre === nombre);
-    if (productoExistente) {
-        productoExistente.cantidad += 1;
-    } else {
-        carrito.push({ nombre, precio, img, cantidad: 1 });
-    }
-
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-}

@@ -34,17 +34,28 @@
             <h3>Total: $<span id="totalCarrito">0</span></h3>
         </div>
         <button id="vaciarCarrito">Vaciar Carrito</button>
+        <button id="FinalizarCompra">Finalizar Compra</button>
     </div>
-    <div class="modal hidden" id="modal">
+    <div id="modal" class="modal">
         <div class="modal-content">
-            <h3>Datos de la Tarjeta</h3>
-            <input type="text" id="cardName" placeholder="Nombre en la tarjeta">
-            <input type="text" id="cardNumber" placeholder="Número de la tarjeta">
-            <input type="text" id="cardExpiry" placeholder="Fecha de vencimiento (MM/AA)">
-            <input type="text" id="cardCVC" placeholder="CVC">
-            <button id="confirmarCompra">Confirmar Compra</button>
+            <span class="close-button">&times;</span>
+            <h2>Finalizar Compra</h2>
+            <form id="formularioCompra">
+                <label for="nombre">Nombre del propietario:</label>
+                <input type="text" id="nombre" name="nombre" required>
+                <label for="tarjeta">Número de tarjeta de crédito:</label>
+                <input type="text" id="tarjeta" name="tarjeta" required>
+                <label for="fechaVencimiento">Fecha de vencimiento:</label>
+                <input type="text" id="fechaVencimiento" name="fechaVencimiento" placeholder="MM/AA" required>
+                <label for="cvc">CVC:</label>
+                <input type="text" id="cvc" name="cvc" required>
+                <label for="direccion">Dirección:</label>
+                <input type="text" id="direccion" name="direccion" required>
+                <button type="submit">Confirmar Pago</button>
+            </form>
         </div>
     </div>
+</div>
 
     <script src="js/Carrito.js" defer></script>
     
